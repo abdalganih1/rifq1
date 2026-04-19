@@ -1,0 +1,13 @@
+vendor/
+node_modules/
+public/storage
+storage/
+.env
+.env.backup
+.phpunit.result.cache
+composer.lock
+package-lock.json
+.DS_Store
+*.swp
+*.swo
+*~
