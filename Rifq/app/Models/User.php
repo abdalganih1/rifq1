@@ -9,12 +9,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable, SoftDeletes, HasRoles, HasApiTokens;
+    use HasFactory, Notifiable, SoftDeletes, HasRoles;
 
     protected $fillable = [
         'role_id',
@@ -93,7 +92,7 @@ class User extends Authenticatable
         return $this->hasMany(Animal::class, 'created_by');
     }
 
-    public function getFullNameAttribute(): string
+    public function getNameAttribute(): string
     {
         return trim($this->first_name . ' ' . $this->last_name);
     }

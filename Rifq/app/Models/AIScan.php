@@ -10,6 +10,8 @@ class AIScan extends Model
 {
     use SoftDeletes;
 
+    protected $table = 'ai_scans';
+
     protected $fillable = [
         'animal_id',
         'user_id',
