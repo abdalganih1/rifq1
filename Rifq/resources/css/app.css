@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Arabic Typography */
+* {
+    font-family: 'Cairo', sans-serif;
+}
+
+/* RTL Support */
+[dir="rtl"] {
+    text-align: right;
+}
+
+[dir="rtl"] .space-x-4 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 1;
+}
+
+/* Custom Purple Theme */
+:root {
+    --primary-purple: #9333ea;
+    --primary-purple-dark: #7e22ce;
+    --primary-purple-light: #c084fc;
+}
+
+/* Custom Button Styles */
+.btn-primary {
+    @apply bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition font-semibold;
+}
+
+.btn-secondary {
+    @apply bg-white text-purple-600 border-2 border-purple-600 px-4 py-2 rounded-lg hover:bg-purple-50 transition font-semibold;
+}
+
+/* Card Hover Effects */
+.card-hover {
+    @apply hover:shadow-lg transition-shadow duration-300;
+}
+
+/* Status Badges */
+.badge-success {
+    @apply bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium;
+}
+
+.badge-warning {
+    @apply bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium;
+}
+
+.badge-error {
+    @apply bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-medium;
+}
+
+/* Form Styles */
+.form-input {
+    @apply w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent;
+}
+
+.form-label {
+    @apply block text-sm font-medium text-gray-700 mb-2;
+}
+
+/* Gradient Backgrounds */
+.gradient-purple {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.gradient-pink {
+    background: linear-gradient(135deg, #c084fc 0%, #f472b6 100%);
+}
+
+/* Smooth Transitions */
+.transition-all {
+    transition: all 0.3s ease;
+}
+
+/* Loading Spinner */
+.spinner {
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #9333ea;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
