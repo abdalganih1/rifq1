@@ -44,20 +44,20 @@ class UserResource extends Resource
 
             Forms\Components\Section::make('الصلاحيات والانتماء')->schema([
                 Forms\Components\Select::make('roles')
-                    ->relationship('roles', 'name')
+                    ->relationship('roles', 'name', fn ($query) => $query->whereNotNull('name'))
                     ->multiple()
                     ->preload()
                     ->label('الأدوار (Spatie)'),
                 Forms\Components\Select::make('organization_id')
-                    ->relationship('organization', 'name')
+                    ->relationship('organization', 'name', fn ($query) => $query->whereNotNull('name'))
                     ->searchable()->preload()
                     ->label('المنظمة'),
                 Forms\Components\Select::make('governorate_id')
-                    ->relationship('governorate', 'name')
+                    ->relationship('governorate', 'name', fn ($query) => $query->whereNotNull('name'))
                     ->searchable()->preload()
                     ->label('المحافظة'),
                 Forms\Components\Select::make('independent_team_id')
-                    ->relationship('independentTeam', 'name')
+                    ->relationship('independentTeam', 'name', fn ($query) => $query->whereNotNull('name'))
                     ->searchable()->preload()
                     ->label('الفريق المستقل'),
             ])->columns(2),

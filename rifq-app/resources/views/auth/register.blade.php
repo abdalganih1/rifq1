@@ -34,7 +34,7 @@
             <!-- Gender -->
             <div>
                 <x-input-label for="gender" :value="__('Gender')" />
-                <select id="gender" name="gender" class="block mt-1 w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500" required>
+                <select id="gender" name="gender" class="block mt-1 w-full border-gray-300 rounded-md shadow-sm focus:border-emerald-500 focus:ring-emerald-500" required>
                     <option value="" disabled selected>{{ __('Select Gender') }}</option>
                     <option value="Male">{{ __('Male') }}</option>
                     <option value="Female">{{ __('Female') }}</option>
@@ -88,7 +88,7 @@
         </div>
 
         <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
+            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500" href="{{ route('login') }}">
                 {{ __('Already registered?') }}
             </a>
 

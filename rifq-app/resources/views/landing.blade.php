@@ -1,7 +1,29 @@
-@extends('layouts.guest')
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>{{ config('app.name', 'رِفْق') }}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <style>
+        * { font-family: 'Cairo', sans-serif; }
+    </style>
+</head>
+<body class="antialiased bg-gray-50">
+<div class="min-h-screen">
 
-@section('content')
-<div class="min-h-screen" dir="rtl">
+    <div class="fixed top-4 {{ app()->getLocale() === 'ar' ? 'left-4' : 'right-4' }} z-50 flex gap-2">
+        <a href="{{ route('language.switch', 'ar') }}" class="px-3 py-1.5 text-sm font-semibold rounded-lg transition-all {{ app()->getLocale() === 'ar' ? 'bg-green-700 text-white shadow-lg' : 'bg-white/90 text-gray-700 hover:bg-green-50 border border-gray-200' }}">
+            عربي
+        </a>
+        <a href="{{ route('language.switch', 'en') }}" class="px-3 py-1.5 text-sm font-semibold rounded-lg transition-all {{ app()->getLocale() === 'en' ? 'bg-green-700 text-white shadow-lg' : 'bg-white/90 text-gray-700 hover:bg-green-50 border border-gray-200' }}">
+            English
+        </a>
+    </div>
 
     <section class="relative bg-gradient-to-bl from-emerald-600 via-green-700 to-teal-800 text-white overflow-hidden">
         <div class="absolute inset-0 bg-black/10"></div>
@@ -16,10 +38,10 @@
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
                     <a href="{{ route('animals.index') ?? '#' }}" class="inline-flex items-center justify-center px-8 py-4 bg-white text-green-700 font-bold rounded-xl hover:bg-green-50 transition-all shadow-lg hover:shadow-xl">
-                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
+                        <svg class="w-5 h-5 ms-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
                         {{ __('messages.view_registry') ?: 'عرض السجل' }}
                     </a>
-                    <a href="{{ route('about') ?? '#' }}" class="inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-xl hover:bg-white/10 transition-all">
+                    <a href="{{ route('pages.about') ?? '#' }}" class="inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-xl hover:bg-white/10 transition-all">
                         {{ __('messages.learn_more') ?: 'اعرف المزيد' }}
                     </a>
                 </div>
@@ -94,19 +116,19 @@
                     </p>
                     <ul class="space-y-3">
                         <li class="flex items-center text-gray-700">
-                            <svg class="w-5 h-5 text-green-500 ml-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                            <svg class="w-5 h-5 text-green-500 ms-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
                             {{ __('messages.feat_rescue') ?: 'إنقاذ الحيوانات المشردة والمصابة' }}
                         </li>
                         <li class="flex items-center text-gray-700">
-                            <svg class="w-5 h-5 text-green-500 ml-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                            <svg class="w-5 h-5 text-green-500 ms-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
                             {{ __('messages.feat_vet') ?: 'توفير الرعاية البيطرية' }}
                         </li>
                         <li class="flex items-center text-gray-700">
-                            <svg class="w-5 h-5 text-green-500 ml-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                            <svg class="w-5 h-5 text-green-500 ms-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
                             {{ __('messages.feat_adopt') ?: 'برنامج التبني وإعادة التأهيل' }}
                         </li>
                         <li class="flex items-center text-gray-700">
-                            <svg class="w-5 h-5 text-green-500 ml-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                            <svg class="w-5 h-5 text-green-500 ms-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
                             {{ __('messages.feat_awareness') ?: 'نشر الوعي بحقوق الحيوان' }}
                         </li>
                     </ul>
@@ -115,7 +137,7 @@
                     <div class="text-7xl mb-6">🐾</div>
                     <h3 class="text-2xl font-bold text-green-800 mb-4">{{ __('messages.join_us') ?: 'انضم إلينا' }}</h3>
                     <p class="text-green-700 mb-6">{{ __('messages.join_desc') ?: 'كن جزءاً من التغيير الإيجابي في مجتمعنا' }}</p>
-                    <a href="{{ route('contact') ?? '#' }}" class="inline-flex items-center px-6 py-3 bg-green-700 text-white rounded-xl font-semibold hover:bg-green-800 transition-colors">
+                    <a href="{{ route('pages.contact') ?? '#' }}" class="inline-flex items-center px-6 py-3 bg-green-700 text-white rounded-xl font-semibold hover:bg-green-800 transition-colors">
                         {{ __('messages.contact_us') ?: 'تواصل معنا' }}
                     </a>
                 </div>
@@ -128,10 +150,10 @@
             <h2 class="text-3xl font-bold mb-4">{{ __('messages.cta_title') ?: 'ساهم في صنع الفرق' }}</h2>
             <p class="text-green-100 text-lg mb-8">{{ __('messages.cta_desc') ?: 'كل مساهمة تساعد في إنقاذ حياة حيوان مشرد وتوفير رعاية أفضل له' }}</p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="{{ route('contact') ?? '#' }}" class="px-8 py-4 bg-white text-green-700 font-bold rounded-xl hover:bg-green-50 transition-all shadow-lg">
+                <a href="{{ route('pages.contact') ?? '#' }}" class="px-8 py-4 bg-white text-green-700 font-bold rounded-xl hover:bg-green-50 transition-all shadow-lg">
                     {{ __('messages.volunteer') ?: 'تطوع معنا' }}
                 </a>
-                <a href="{{ route('about') ?? '#' }}" class="px-8 py-4 border-2 border-white text-white font-bold rounded-xl hover:bg-white/10 transition-all">
+                <a href="{{ route('pages.about') ?? '#' }}" class="px-8 py-4 border-2 border-white text-white font-bold rounded-xl hover:bg-white/10 transition-all">
                     {{ __('messages.about_project') ?: 'عن المشروع' }}
                 </a>
             </div>
@@ -139,4 +161,5 @@
     </section>
 
 </div>
-@endsection
+</body>
+</html>

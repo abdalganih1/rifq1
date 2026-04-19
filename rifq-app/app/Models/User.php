@@ -92,7 +92,7 @@ class User extends Authenticatable
         return $this->hasMany(Animal::class, 'created_by');
     }
 
-    public function getFullNameAttribute(): string
+    public function getNameAttribute(): string
     {
         return trim($this->first_name . ' ' . $this->last_name);
     }
